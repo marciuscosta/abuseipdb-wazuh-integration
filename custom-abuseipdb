@@ -1,0 +1,29 @@
+#!/bin/bash
+#
+# Script to call custom-abusipdb.py to manage API keys and download blacklist
+#
+# by Marcius Costa - https://marcius.pro
+# At 02/2024
+
+PYTHON_EXEC=/var/ossec/framework/python/bin/python3
+# Change value bellow to correct custom-abuseipdb.py full path if necessary
+CUSTOM_ABUSEIPDB=/var/ossec/integrations/custom-abuseipdb.py
+
+COMMAND=$1
+ACTION=$2
+VALUE=$3
+
+case $COMMAND in
+	apikey)
+		if [ ! -z $2 ] && [ -z $3 ]; then
+			$PYTHON_EXEC $CUSTOM_ABUSEIPDB apikey $ACTION
+		elif [ ! -z $2 ] && [ ! -z $3 ]; then
+			$PYTHON_EXEC $CUSTOM_ABUSEIPDB apikey $ACTION $VALUE
+		else
+			$PYTHON_EXEC $CUSTOM_ABUSEIPDB apikey
+		fi
+	;;
+	blacklist)
+			$PYTHON_EXEC $CUSTOM_ABUSEIPDB blacklist
+	;;
+esac
