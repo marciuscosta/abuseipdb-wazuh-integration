@@ -1,0 +1,261 @@
+<decoder name="abuseipdb">
+	<prematch>^AbuseIPDB_integration\|\w+ \w+ \d+ \d\d:\d\d:\d\d -\d\d \d\d\d\d\|</prematch>
+</decoder>
+
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>^AbuseIPDB_integration\|\w+ \w+ \d+ \d\d:\d\d:\d\d -\d\d \d\d\d\d\|ERROR: (\.+)$</regex>
+	<order>abuseipdb.error_message</order>
+</decoder>
+
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>^AbuseIPDB_integration\|(\w+ \w+ \d+ \d\d:\d\d:\d\d -\d\d \d\d\d\d)\|</regex>
+	<order>abuseipdb.timestamp</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>From_location: "(\.+)"</regex>
+	<order>abuseipdb.location</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>IP: "(\S+)"</regex>
+	<order>srcip</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>IP_last_checked: "(\.+)"\|</regex>
+	<order>abuseipdb.ip.last_checked</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Country_code: "(\w+)"\|</regex>
+	<order>abuseipdb.ip.country_code</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Abuse_confidence_score: "(\d+)"\|</regex>
+	<order>abuseipdb.ip.score</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Last_reported_at: "(\.+)"\|</regex>
+	<order>abuseipdb.ip.last_reported</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Public_IP: "(\S+)"\|</regex>
+	<order>abuseipdb.ip.public</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>IP_version: "(\d+)"\|</regex>
+	<order>abuseipdb.ip.version</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Whitelisted: "(\S+)"\|</regex>
+	<order>abuseipdb.ip.whitelisted</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Usage_type: "(\.+)"\|</regex>
+	<order>abuseipdb.ip.usage_type</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>ISP: "(\.+)"\|</regex>
+	<order>abuseipdb.ip.isp</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Domain: "(\S+)"\|</regex>
+	<order>abuseipdb.ip.domain</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Hostnames: "['(\.+)']"\|</regex>
+	<order>abuseipdb.ip.hostnames</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Is_TOR: "(\S+)"\|</regex>
+	<order>abuseipdb.ip.is_TOR</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Total_reports: "(\d+)"\|</regex>
+	<order>abuseipdb.ip.total_reports</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>Number_of_distinct_users: "(\d+)"\|</regex>
+	<order>abuseipdb.ip.number_of_distinct_users</order>
+</decoder>
+
+
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: (\.+)$</regex>
+	<order>abuseipdb.alert.content</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_ID: "(\d+.\d+)"</regex>
+	<order>abuseipdb.alert.ID</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: {'timestamp':'(\S+)','</regex>
+	<order>abuseipdb.alert.timestamp</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+'level': (\d+),</regex>
+	<order>abuseipdb.alert.rule_level</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'description': '(\.+)',</regex>
+	<order>abuseipdb.alert.rule_description</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+', 'id': '(\d+)',</regex>
+	<order>abuseipdb.alert.rule_id</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'firedtimes': (\d+), </regex>
+	<order>abuseipdb.alert.rule_firedtimes</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'mail': (\w+), </regex>
+	<order>abuseipdb.alert.rule_mail</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'groups': [(\.+)], '</regex>
+	<order>abuseipdb.alert.rule_groups</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'gdpr': [(\.+)], </regex>
+	<order>abuseipdb.alert.rule_gdpr</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'gpg13': [(\.+)], </regex>
+	<order>abuseipdb.alert.rule_gpg13</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'hipaa': [(\.+)], </regex>
+	<order>abuseipdb.alert.rule_hipaa</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'nist_800_53': [(\.+)], </regex>
+	<order>abuseipdb.alert.rule_nist_800_53</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'rule':\.+, 'pci_dss': [(\.+)]</regex>
+	<order>abuseipdb.alert.rule_pci_dss</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+, 'agent':\.+'id': '(\d+)'</regex>
+	<order>abuseipdb.alert.agent_id</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+, 'agent':\.+'name': '(\S+)'</regex>
+	<order>abuseipdb.alert.agent_name</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+, 'manager':\.+'name': '(\S+)'</regex>
+	<order>abuseipdb.alert.manager_name</order>
+</decoder>
+
+<!--decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_full_log: [FULL_LOG](\.+)[FULL_LOG]\|</regex>
+	<order>abuseipdb.alert.full_log</order>
+</decoder-->
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'predecoder':\.+'program_name': '(\S+)'</regex>
+	<order>abuseipdb.alert.predecoder_program_name</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'predecoder':\.+'timestamp': '(\S+)'</regex>
+	<order>abuseipdb.alert.predecoder_timestamp</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'decoder':\.+'parent': '(\S+)'</regex>
+	<order>abuseipdb.alert.decoder_parent</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+', 'decoder':\.+'name': '(\S+)'</regex>
+	<order>abuseipdb.alert.decoder_name</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+, 'data': {(\.+)}, </regex>
+	<order>abuseipdb.alert.event_data</order>
+</decoder>
+
+<decoder name="abuseipdb_fields">
+	<parent>abuseipdb</parent>
+	<regex>\|Alert_content: \.+, 'location': '(\.+)'</regex>
+	<order>abuseipdb.alert.location</order>
+</decoder>
+
+
