@@ -32,15 +32,19 @@ sudo chmod 660 /var/ossec/etc/decoders/1600-abuseipdb-integration_decoders.xml &
     <log_format>syslog</log_format>
 </localfile>
 ```
-4. Add your first API key into local cache database used by this script.
+4. Restart your Wazuh Manager
+```
+sudo /var/ossec/bin/wazuh-control restart
+```
+5. Add your first API key into local cache database used by this script.
 ```
 sudo /var/ossec/integrations/custom-abuseipdb apikey add PUT_YOUR_API_KEY_HERE
 ```
 You can add more than one API key, and this script will use all the API keys one at a time until you exceed the daily limit, where it will use the next API key saved in the local cache database
 
-5. If you want use blacklist of AbuseIPDB in this integration, you need enable it in custom-abuseipdb.py file, change the variable "blacklist_enabled" to "True" (with T in uppercase)
+6. If you want use blacklist of AbuseIPDB in this integration, you need enable it in custom-abuseipdb.py file, change the variable "blacklist_enabled" to "True" (with T in uppercase)
 
-6. To download manually blacklist, make this
+7. To download manually blacklist, make this
 ```
 sudo /var/ossec/integrations/custom-abuseipdb blacklist
 ```
