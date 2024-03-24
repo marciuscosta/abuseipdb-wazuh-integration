@@ -58,7 +58,7 @@ log_file = ossecdir + "logs/integrations.log"
 # Variable will store the full content of alert received
 alert_content = None
 # Define if blacklist will be used (True) or not (False)
-blacklist_enabled = True
+blacklist_enabled = False
 # Destination directory where blacklist will be saved on download from AbuseIPDB
 blacklist_file = ossecdir + "etc/lists/abuseipdb_blacklist"
 # Minimum level of confidence to download blacklist from AbuseIPDB
